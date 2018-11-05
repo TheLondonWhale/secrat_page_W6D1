@@ -15,7 +15,7 @@ Tu peux tout tester via le lien Heroku (commence par te créer un compte).
 
 Si tu tiens absolument à cloner le projet, je t'invite, suite au clonage, à rentrer dans le dossier via la commande :
 ```
-cd private_club_W6D1
+cd secrate_page_W6D1 (oui j'ai merdé en tapant le nom)
 ```
 Puis tape :
 ```
@@ -30,7 +30,7 @@ Et enfin :
 rails db:migrate
 ```
 
-## 💁Auteurs ‍
+## Auteurs ‍
 
 Ce projet a été réalisé en pair-programming avec Anaïs Diologeant et Thomas Perus.
 #TeamLille #Welsh #Bieres

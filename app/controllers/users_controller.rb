@@ -32,10 +32,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes(user_params)
-    puts @user.errors.full_messages
-    puts "EHEHEHEH"
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      flash.now[:danger] = ""
+      render 'edit'
+    end
   end
 
   def destroy

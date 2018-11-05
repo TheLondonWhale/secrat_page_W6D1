@@ -17,7 +17,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", edit_user_path(@user) #on trouve bien le lien vers la page d'edit.
   end
 
-  test "reaching edit_page being logged out"do
+  test "reaching edit_page being logged out" do
     get logout_path #on se déconnecte
     assert_not is_logged_in? #on vérifie la déconnexion
     follow_redirect! #on revient sur la page d'acccueil
@@ -38,10 +38,18 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", edit_user_path(1) #on trouve bien le lien vers la page d'edit.
   end
 
-end
 
-=begin
-get edit_user_path(rand(1..20)) #on essaie d'aller sur la page d'une autre personne (id différent de l'id de test)
-assert_not flash.empty? #on vérife le message d'erreur
-assert_redirected_to login_path #on renvoie vers la page de connexion
-=end
+  test "edit with invalid information" do # test de la redirection si les infos fournies lors de l'édition sont fausses
+      get login_path #on se connecte
+      post login_path, params: { session: { email: @user.email, password: 'password' } }
+      get edit_user_path(@user) #on va sur la page d'édition
+      patch user_path(@user), params: { user: { first_name: "  ",
+                                        last_name: "  ",
+                                        email: "wrong@exmaple,com"}
+                                       } #on ne respecte plus les contraintes
+      assert_not flash.empty? #on vérifie que l'on a un message d'erreur présent
+      get root_path #on change de page
+      assert flash.empty? #on vérifie que le message d'erreur n'apparaît qu'une fois
+  end
+
+end

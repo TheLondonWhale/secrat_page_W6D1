@@ -12,6 +12,7 @@
             <th scope="col" class="text-white">Prénom</th>
             <th scope="col" class="text-white">Nom</th>
             <th scope="col" class="text-white">Email</th>
+            <th scope="col" class="text-white">Page du profil</th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
           <th scope="row"><%= user.first_name %></th>
           <th scope="row"><%= user.last_name %></th>
           <th scope="row"><%= user.email %></th>
+          <th scope="row"><%= link_to 'Voir le profil', user_path(user.id) %></th>
         </tr>
       <% end %>
       </tbody>

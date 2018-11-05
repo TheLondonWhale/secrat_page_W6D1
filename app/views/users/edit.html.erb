@@ -5,6 +5,7 @@
 
 <div class="container">
   <%= form_for @user do |f| %>
+  <%= render 'shared/errors_messages' %>
 
     <%= f.label :first_name, "Ton prénom"%><br/>
     <%= f.text_field :first_name, class:"form-control"%><br/>

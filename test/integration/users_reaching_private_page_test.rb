@@ -12,6 +12,7 @@ class UsersReachingPrivatePageTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
     get users_path #on atteint bien la pae secrète
     assert_select "table" #on affiche bien le tableau des users
+    assert_select "a[href=?]", user_path(@user) #on a bien les liens vers les pages des profils qui s'affichent
     get logout_path #on se déconnecte
     assert_not is_logged_in?
     get users_path #on essaie d'atteindre la page secrète
