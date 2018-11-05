@@ -3,8 +3,8 @@
   <ul class="nav navbar-nav">
    <li class="nav-item active"><%= link_to "Accueil", root_path, class:'nav-link' %></li>
    <% if logged_in? %>
-    <li class="nav-item"><%= link_to "Private club", users_path, class:'nav-link' %></li>
-    <li class="nav-item nav-link">Connecté en tant que : <%= @current_user.first_name %></li>
+    <li class="nav-item"><%= link_to "Connecté en tant que #{@current_user.first_name}", user_path(@current_user), class:'nav-link'%></li>
+    <li class="nav-item"><%= link_to "Page secrète", users_path, class:'nav-link' %></li>
     <li class="nav-item"><%= link_to "Se déconnecter", logout_path, method: :delete, class:'nav-link' %></li>
    <% else %>
     <li class="nav-item"><%= link_to "Se connecter", login_path, class:'nav-link' %></li>

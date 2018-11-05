@@ -1,24 +1,36 @@
-# README
+# LA SECRET PAGE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+L'objectif de ce projet était de réaliser un site permettant à un utilisateur de se créer un compte, de se connecter, de modifier ses paramètres et de pouvoir aller voir les autres profils.
+Nous avons restreint l'accès de la page secret aux personnes inscrites et le smemebres ne peuvent uniquement modifier leur compte.
 
-Things you may want to cover:
+Nous avons surout travailler sur les `flash` et la méthode TDD pour réaliser ce projet
 
-* Ruby version
 
-* System dependencies
+## Version finale
 
-* Configuration
+Tu trouveras l'application finale en cliquant sur le lien suivant : https://secret-page-thp.herokuapp.com/
+Tu peux tout tester via le lien Heroku (commence par te créer un compte).
 
-* Database creation
+## POur utiliser l'appli
 
-* Database initialization
+Si tu tiens absolument à cloner le projet, je t'invite, suite au clonage, à rentrer dans le dossier via la commande :
+```
+cd private_club_W6D1
+```
+Puis tape :
+```
+bundle install
+```
+Puis :
+```
+rails db:create
+```
+Et enfin :
+```
+rails db:migrate
+```
 
-* How to run the test suite
+## 💁Auteurs ‍
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ce projet a été réalisé en pair-programming avec Anaïs Diologeant et Thomas Perus.
+#TeamLille #Welsh #Bieres

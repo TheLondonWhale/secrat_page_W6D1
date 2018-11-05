@@ -1,29 +1,40 @@
 class UsersController < ApplicationController
 
-before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
+
 
   def new
     @user = User.new
   end
 
+  def show
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
+      flash.now[:success] = "Connexion réussie"
       redirect_to root_path
     else
       render 'new'
     end
   end
 
-
-  def show
-  end
-
   def edit
+    if logged_in? && @current_user.id == @user.id
+    else
+      redirect_to root_path
+      flash[:danger] = "Accès restreint: tu ne peux pas accéder à ces informations."
+    end
   end
 
   def update
-    @user.update(user_params)
+    @user.update_attributes(user_params)
+    puts @user.errors.full_messages
+    puts "EHEHEHEH"
     redirect_to user_path(@user.id)
   end
 
@@ -34,13 +45,13 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     if logged_in?
-      @user = User.all.order("last_name ASC")
     else
+      flash[:danger] = "Cette page n'est accessible qu'aux membres connectés"
       redirect_to login_path
     end
   end
 
-private
+  private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
@@ -48,6 +59,13 @@ private
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Veuillez vous connectez pour accéder à cette page."
+      redirect_to login_url
+    end
   end
 
 end

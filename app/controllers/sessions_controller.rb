@@ -7,10 +7,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       puts user.first_name
       log_in user
-      redirect_to user
+      flash[:success] = "Connexion réussie !"
+      redirect_to root_path
     else
       puts "HELLO"
-      flash[:alert] = "La combinaison email/mot de passe est invalide. Veuillez Réessayer."
+      flash.now[:danger] = "La combinaison email/mot de passe est invalide. Veuillez Réessayer."
       render 'new'
     end
   end

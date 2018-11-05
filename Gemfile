@@ -65,5 +65,6 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'minitest'
 gem 'minitest-reporters'
+gem 'rails-controller-testing'
 
 gem 'bcrypt',         '3.1.12'
