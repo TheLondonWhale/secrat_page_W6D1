@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>S'incrire</title>
+
+  </head>
+  <body>
+
+
+    <h1 class="text-center">Inscris-toi !</h1>
+    <div class="container">
+    <%= form_for @user do |f| %>
+      <%= render 'shared/errors_messages' %>
+
+      <%= f.label :first_name, "Ton prénom"%><br/>
+      <%= f.text_field :first_name, class:"form-control"%><br/>
+
+      <%= f.label :last_name, "Ton nom"%><br/>
+      <%= f.text_field :last_name, class:"form-control" %><br/>
+
+      <%= f.label :email, "Ton email"%><br/>
+      <%= f.email_field :email, class:"form-control" %><br/>
+
+      <%= f.label :password, "Ton mot de passe"%><br/>
+      <%= f.password_field :password, class:"form-control" %><br/>
+
+      <%= f.label :password_confirmation, "Confirmation de mot de passe"%><br/>
+      <%= f.password_field :password_confirmation, class:"form-control" %><br/>
+
+      <p class="text-center"><%= f.submit "Je m'enregistre", class:"btn btn-success" %></p><br/>
+      <% end %>
+      </div>
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<h1 class="text-center">Edite ton profil !</h1>
+<div class="container">
+<%= form_for @user do |f| %>
+
+<%= f.label :first_name, "Ton prénom"%><br/>
+<%= f.text_field :first_name, class:"form-control"%><br/>
+
+<%= f.label :last_name, "Ton nom"%><br/>
+<%= f.text_field :last_name, class:"form-control" %><br/>
+
+<%= f.label :email, "Ton email"%><br/>
+<%= f.email_field :email, class:"form-control" %><br/>
+
+<p class="text-center"><%= f.submit "Editer mon profil", class:"btn btn-outline-primary" %>
+
+<%= link_to 'Supprimer mon profil', @user, method: :delete, class:"btn btn-outline-danger" %></p><br/>
+
+<% end %>
+</div>

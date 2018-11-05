@@ -1,0 +1,35 @@
+<br/>
+
+<% if logged_in? %>
+
+  <h2 class="text-center">La liste des inscrits ‍</h2><br/>
+
+  <div class="container">
+    <table class="table">
+        <thead class="fond-bleu">
+          <tr>
+            <th scope="col" class="text-white">#</th>
+            <th scope="col" class="text-white">Prénom</th>
+            <th scope="col" class="text-white">Nom</th>
+            <th scope="col" class="text-white">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+
+      <% User.all.each do |user| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <th scope="row"><%= user.first_name %></th>
+          <th scope="row"><%= user.last_name %></th>
+          <th scope="row"><%= user.email %></th>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+<% else %>
+
+ <h2 class="text-center">Il faut être inscrit pour voir la liste des inscrits</h2><br/>
+
+<% end %>
