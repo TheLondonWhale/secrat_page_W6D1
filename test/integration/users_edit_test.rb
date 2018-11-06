@@ -35,7 +35,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user) # on renvoie bien vers la show du profil
     get user_path(1) #on va sur une page différente de profil
     assert_select "table" #on affiche bien le tableau des informations
-    assert_select "a[href=?]", edit_user_path(1) #on trouve bien le lien vers la page d'edit.
+    get edit_user_path(1) #on force le lien vers le edit sans être connecté comme le bon user
+    assert_not flash.empty? #on vérife le message d'erreur
+    assert_redirected_to login_path #on renvoie vers la page de connexion
   end
 
 
