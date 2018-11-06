@@ -1,7 +1,10 @@
 <br />
 <div class="text-center">
-  <h1 class="text-center">Bonjour <%= @user.first_name %></h1> <br/>
-  <h3 class="text-center">Voici tes petites infos:</h3> <br />
+  <% if logged_in? && @current_user.id == @user.id %>
+    <h3 class="text-center">Voici tes petites infos, <%= @user.first_name %>.</h3> <br />
+  <% else %>
+    <h3 class="text-center">Voici les petites infos de <%= @user.first_name %>.</h3> <br />
+  <% end %>
 </div>
 
 <div class="text-center">
