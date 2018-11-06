@@ -22,6 +22,8 @@
   </table>
 </div>
 
+<% if logged_in? && @current_user.id == @user.id %>
 <p class="text-center"><%= link_to "Editer mon profil", edit_user_path, class: "btn btn-outline-secondary" %> </p>
+<% end %>
 
 <p class="text-center"><%= link_to "Retour à l'accueil", root_path, class: "btn btn-outline-secondary" %> </p>
